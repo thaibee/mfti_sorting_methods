@@ -31,5 +31,15 @@ def recurs_rectangle(a, b, c, d, depth=10):
     recurs_rectangle(a1, b1, c1, d1, depth - 1)
 
 
-recurs_rectangle(A, B, C, D, 20)
-window.getMouse()
+# recurs_rectangle(A, B, C, D, 20)
+# window.getMouse()
+
+
+def gcd(a, b):
+    """алгоритм Евклида по поиску НОД"""
+    if not b % a:
+        return a
+    return gcd(b % a, a)
+
+
+print(gcd(100, 24))
