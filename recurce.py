@@ -37,9 +37,14 @@ def recurs_rectangle(a, b, c, d, depth=10):
 
 def gcd(a, b):
     """алгоритм Евклида по поиску НОД"""
-    if not b % a:
-        return a
-    return gcd(b % a, a)
+    return a if not b % a else gcd(b % a, a)
 
 
-print(gcd(100, 24))
+def change_tow(length, t_source, t_target, t_temp):
+    """ханойские башни example: change_tow(6, [6, 5, 4, 3, 2, 1], [], [])"""
+    if length > 0:
+        change_tow(length-1, t_source, t_temp, t_target)
+        t_target.append(t_source.pop())
+        print(t_source, t_target, t_temp)
+        change_tow(length-1, t_temp, t_target, t_source)
+
