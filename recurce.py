@@ -43,3 +43,60 @@ def gcd(a, b):
 
 
 print(gcd(100, 24))
+
+
+def merge(a, b):
+    """алгоритм сортировки слиянием"""
+    c = [0] * (len(a) + len(b))
+    i = j = k = 0
+    while i < len(a) and j < len(b):
+        if a[i] <= b[j]:
+            c[k] = a[i]
+            i += 1
+        else:
+            c[k] = b[j]
+            j += 1
+        k += 1
+    while i < len(a):
+        c[k] = a[i]
+        i += 1
+    while j < len(b):
+        c[k] = b[j]
+        j += 1
+    k += 1
+    return c
+
+
+def merge_sort(m):
+    if len(m) <= 1:
+        return
+    middle = len(m) // 2
+    left = [m[i] for i in range(0, middle)]
+    right = [m[i] for i in range(middle, len(m))]
+    merge_sort(left)
+    merge_sort(right)
+    s = merge(left, right)
+    for i in range(len(m)):
+        m[i] = s[i]
+
+
+def sort(a):
+    """Сортировка Тони Хора"""
+    if len(a) < 2:
+        return
+    l = []
+    m = []
+    r = []
+    for i in a:
+        if i < a[0]:
+            l.append(i)
+        elif i == a[0]:
+            m.append(i)
+        else:
+            r.append(i)
+    k = 0
+    sort(l)
+    sort(r)
+    for x in l + m + r:
+        a[k] = x
+        k += 1
